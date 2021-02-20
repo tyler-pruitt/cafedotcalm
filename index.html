@@ -23,20 +23,35 @@
     </header>
     
     <p>Welcome to cafedotcalm! We hope you enjoy your stay :)</p>
-    <img id="main-gif" src="taiwanstudy.gif">
-    <p>Image credits to Pixel Jeff (@pixeljeff1995) | Twitter</p>
 
-    
-    <ol id="video-queue">
-    </ol>
-
-    <div class="form-group">
-      <label for="video-url-input">Video URL Input</label>
-      <input type="text" id="video-url-input" class="form-control">
+    <div id="main">
+      <div id="now-playing">
+        <h6>now playing:</h6>
+        <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      </div>
+      <div >
+        <img id="main-gif" src="taiwanstudy.gif">
+        <p>Image credits to Pixel Jeff (@pixeljeff1995) | Twitter</p>
+      </div>
+      <div id="up-next">
+        <h6>up next:</h6>
+        <ol id="video-queue">
+        </ol>
+      </div>
     </div>
 
-    <button id="confirm-btn" class="btn btn-primary">push to queue</button>
+    <div id="bottom-row">
+      <div class="form-group">
+        <h6 for="video-url-input">Request a song here: <br> (input a valid youtube link)</h6>
+        <input type="text" id="video-url-input" class="form-control">
+        <button id="confirm-btn">add to queue</button>
+      </div>
+      <div id="updates">
+        <h6>updates:</h6>
+        <p>updates go here</p>
+      </div>
 
+    </div>
 
     <!-- JavaScript -->
     <script src="./index.js"></script>
