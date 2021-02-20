@@ -6,6 +6,9 @@ window.onload = function() {
         queue.push(videoInput);
         console.log(queue);
 
+        db.collection("queue").add({URL: videoInput})
+
+
         ul = document.getElementById("video-queue");
         let li = document.createElement('li');
         li.innerHTML = videoInput;
