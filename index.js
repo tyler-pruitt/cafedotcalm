@@ -1,4 +1,8 @@
 //Your JavaScript code will go here!
+// Firebase App (the core Firebase SDK) is always required and must be listed first
+
+
+
 window.onload = function() {
     var queue = [];
     document.getElementById("confirm-btn").addEventListener("click", function () {
