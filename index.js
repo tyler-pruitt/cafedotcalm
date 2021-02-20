@@ -4,5 +4,6 @@ window.onload = function() {
     document.getElementById("confirm-btn").addEventListener("click", function () {
         var videoInput = document.getElementById("video-url-input").value;
         queue.push(videoInput);
+        console.log(queue);
     });
 }
