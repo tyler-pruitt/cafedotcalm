@@ -14,4 +14,14 @@ window.onload = function() {
         li.innerHTML = videoInput;
         ul.append(li);
     });
+    //date and time
+    var dt = new Date();
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var output = days[dt.getDay()];
+    output += ", " + months[dt.getMonth()] + " " + dt.getDate() + ".";
+    document.getElementById("date").innerHTML = output;
+
+    document.getElementById("time").innerHTML = dt.getHours() + ":" + dt.getMinutes() + ".";
+
 }
