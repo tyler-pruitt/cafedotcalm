@@ -4,20 +4,30 @@
 
 
 window.onload = function() {
-    var queue = [];
+    ul = document.getElementById("video-queue");
+    // var queue = [];
+
     document.getElementById("confirm-btn").addEventListener("click", function () {
         var videoInput = document.getElementById("video-url-input").value;
-        queue.push(videoInput);
-        console.log(queue);
+        // queue.push(videoInput);
+        // console.log(queue);
 
-        db.collection("queue").add({URL: videoInput})
+        
+        // Having the timestamp serve as the ID might make querying faster? I
+        // don't know...
 
-
-        ul = document.getElementById("video-queue");
-        let li = document.createElement('li');
-        li.innerHTML = videoInput;
-        ul.append(li);
+        // const date = new Date();
+        // const id = date.toISOString();
+        // db.collection("queue")
+        //     .doc(id)
+        //     .set({URL: videoInput});
+        
+        db.collection("queue").add({
+            URL: videoInput,
+            created: firebase.firestore.Timestamp.now()
+        })
     });
+
     //date and time
     var dt = new Date();
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -28,4 +38,17 @@ window.onload = function() {
 
     document.getElementById("time").innerHTML = dt.getHours() + ":" + dt.getMinutes() + ".";
 
+    // We need to make sure that the user is seeing the same queue as everyone
+    // else... So we pull the queue from the database and use it to update
+    // the list in our HTML file.
+    db.collection("queue")
+        .orderBy("created")
+        .onSnapshot((snapshot) => {
+            ul.innerHTML = "";
+            snapshot.forEach(doc => {
+                let li = document.createElement('li');
+                li.innerHTML = doc.data().URL;
+                ul.append(li);
+        })
+    });
 }
