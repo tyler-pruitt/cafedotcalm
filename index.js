@@ -17,9 +17,7 @@ window.onload = function() {
     });
 
 
-    // We need to make sure that the user is seeing the same queue as everyone
-    // else... So we pull the queue from the database and use it to update
-    // the list in our HTML file.
+    // Refresh queue on user's screen.
     db.collection("queue")
         .orderBy("created")
         .onSnapshot((snapshot) => {
@@ -32,6 +30,23 @@ window.onload = function() {
                 queue.push(doc.data());
             });
     });
+
+
+    //update message
+    // addUpdate("welcome!");
+
+    // Refresh chat on user's screen.
+    // Please replace. Super inefficient.
+    db.collection("chat")
+        .orderBy("created")
+        .onSnapshot((snapshot) => {
+            let chat = document.getElementById("updates");
+            chat.innerHTML = "";
+            snapshot.forEach(doc => {
+                chat.insertAdjacentHTML("beforeend", "<p>" + doc.data().message + "</p>");    
+        });
+    });
+
 
     //date and time
     var dt = new Date();
@@ -47,8 +62,6 @@ window.onload = function() {
     function popQueue() {
         db.collection("queue").doc(queue[0].id).delete();
     }
-    //update message
-    // addUpdate("welcome!");
 
     //update/chat
     document.getElementById("enter-btn").addEventListener("click", function(){
@@ -56,17 +69,7 @@ window.onload = function() {
         document.getElementById("chat-input").value = "";
         addUpdate(chat);
 
-    });
-
-    db.collection("chat")
-        .orderBy("created")
-        .onSnapshot((snapshot) => {
-            let chat = document.getElementById("updates");
-            chat.innerHTML = "";
-            snapshot.forEach(doc => {
-                chat.insertAdjacentHTML("beforeend", "<p>" + doc.data().message + "</p>");    
-            });
-        });
+    });   
 }
 
 
