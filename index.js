@@ -13,17 +13,16 @@ window.onload = function() {
             created: firebase.firestore.Timestamp.now()
         });
 
-        
-        // player.playVideo();
-
         addUpdate(videoInput + " was added to the queue!");
     });
 
 
-    // Refresh queue on user's screen.
+    // Updates various things around the page when the database updates.
     db.collection("queue")
         .orderBy("created")
-        .onSnapshot((snapshot) => {
+        .onSnapshot((snapshot) => { 
+            
+             // Refresh queue on user's screen.
             ul.innerHTML = "";
             queue = [];
             snapshot.forEach(doc => {
@@ -31,22 +30,30 @@ window.onload = function() {
                 li.innerHTML = doc.data().URL;
                 ul.append(li);
                 queue.push(doc.data());
-                // queue = queue.subarray(1);
             });
-            snapshot.docChanges().forEach((change) => {
-                if (change.type === "removed") {
-                    console.log(queue);
+    });
+
+
+    db.collection("currentlyPlaying")
+        .onSnapshot((snapshot) => {
+            // Detect when a document is deleted (i.e., when we remove from a 
+            // queue) and start watching a new video.
+            snapshot.docChanges().forEach((change) => { 
+                if (change.type === "added") { 
+                    // Getting ID from video URL.
                     // https://stackoverflow.com/questions/3452546/how-do-i-get-the-youtube-video-id-from-a-url
-                    let videoURL = queue[0].URL;
-                    let videoID = videoURL.split('v=')[1];
+                    // console.log("test" + db.collection("currentlyPlaying").get());
+                    // let videoURL = 
+
+                    let videoID = change.doc.data().URL.split('v=')[1];
                     var ampersandPosition = videoID.indexOf('&');
                     if(ampersandPosition != -1) {
                         videoID = videoID.substring(0, ampersandPosition);
                     }
+
                     player.loadVideoById(videoID);
             }});
     });
-
 
     // Refresh chat on user's screen.
     // Please replace. Super inefficient.
@@ -82,9 +89,29 @@ window.onload = function() {
     });
     
 
-    async function popQueue() {
-        await db.collection("queue").doc(queue[0].id).delete();
-        queue.shift();
+    // Remove a video from the queue and make it the currently playing video.
+    function popQueue() {
+        // Remove the previously "currently-playing" video.
+        console.log(db.collection("currentlyPlaying").get());
+        db.collection("currentlyPlaying")
+            .get()
+            .then(snapshot => {
+                snapshot.forEach(doc => {
+                    doc.ref.delete();
+                })
+            });
+
+        // Grab the video from the top of the queue and make it the new
+        // currently playing video.
+        var newDocRef = db.collection("currentlyPlaying").doc(queue[0].id);
+        
+        newDocRef.set({
+            id: queue[0].id,
+            URL: queue[0].URL,
+        });
+
+        // Remove that video from the queue.
+        db.collection("queue").doc(queue[0].id).delete();
     }
 
     //update/chat
