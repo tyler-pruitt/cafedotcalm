@@ -50,6 +50,8 @@ header{
     /* scale: 25%; */
 }
 #now-playing, #up-next{
+    display: flex;
+    flex-direction: column;
     padding: 15px;
     border-radius: 20px;
     flex: 1;
@@ -57,9 +59,15 @@ header{
     align-self: stretch;
     background-color: ivory;
 }
+
 #now-playing{
-    align-items: center;
+    /* align-items: center; */
     margin-right: 15px;
+}
+
+#clear-queue{
+    align-self: baseline;
+    justify-self: baseline;
 }
 
 #up-next{
