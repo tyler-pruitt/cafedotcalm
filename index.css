@@ -90,17 +90,17 @@ button{
 
 
 #updates-box{
-    height: 100px;
-    min-width: 1000px;
+    height: 200px;
     /* flex: 2; */
-    width: fit-content;
+    width: 1000px;
     align-self: stretch;
     overflow-y: scroll;
 }
 
 #updates-section{
     margin-top: 15px;
-    margin-left: 15px;
+    /*margin-left: 15px;*/
+    margin-right: 15px;
     padding: 15px;
     border-radius: 20px;
     background-color: ivory;
