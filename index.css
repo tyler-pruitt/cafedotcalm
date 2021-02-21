@@ -80,24 +80,28 @@ button{
     margin: 10px 10px 10px 0px;
 }
 
+
 #updates-box{
-    flex-direction: column;
+    height: 100px;
+    min-width: 1000px;
+    /* flex: 2; */
+    width: fit-content;
+    align-self: stretch;
+    overflow-y: scroll;
+}
+
+#updates-section{
     margin-top: 15px;
     margin-left: 15px;
     padding: 15px;
     border-radius: 20px;
-    flex: 2;
-    width: fit-content;
-    align-self: stretch;
-    height: 200px;
     background-color: ivory;
-
-    min-width: 700px;
-
-    overflow-y: scroll;
-    word-wrap: break-word;
 }
 
-#enter-btn{
-    align-self: flex-end;
+#updates-box p{
+    margin: 0px;
+}
+
+#chat-input-section{
+    display: flex;
 }

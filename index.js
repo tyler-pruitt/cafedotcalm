@@ -84,5 +84,10 @@ function addUpdate(message){
         message: message,
         created: firebase.firestore.Timestamp.now()
     });
+    
+    //autoscroll
+    var ud = document.getElementById("updates-box");
+    ud.scrollTop = ud.scrollHeight;
+
     // document.getElementById("updates").insertAdjacentHTML("beforeend", "<p>" + message + "</p>");    
 }
