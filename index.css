@@ -29,9 +29,6 @@ header{
     color: var(--custom-brown);
 }
 
-#now-playing{
-    align-items: center;
-}
 
 #date-time{
     font-style: oblique;
@@ -48,21 +45,23 @@ header{
 }
 
 #main-gif{
-    width: 900px;
-    flex: 2;
+    width: 700px;
+    flex: 1;
     /* scale: 25%; */
 }
 #now-playing, #up-next{
     padding: 15px;
     border-radius: 20px;
     flex: 1;
-    width: fit-content;
+    width: 300px;
     align-self: stretch;
     background-color: ivory;
 }
 #now-playing{
+    align-items: center;
     margin-right: 15px;
 }
+
 #up-next{
     margin-left: 15px;
 }
