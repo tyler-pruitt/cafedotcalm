@@ -1,6 +1,7 @@
+var queue = [];
 window.onload = function() {
     ul = document.getElementById("video-queue");
-    var queue = [];
+    
 
     document.getElementById("confirm-btn").addEventListener("click", function () {
         var videoInput = document.getElementById("video-url-input").value;
@@ -51,7 +52,9 @@ window.onload = function() {
                         videoID = videoID.substring(0, ampersandPosition);
                     }
 
+                    console.log("loaded video")
                     player.loadVideoById(videoID);
+                    player.playVideo();
             }});
     });
 
@@ -88,23 +91,33 @@ window.onload = function() {
         popQueue();
     });
     
+    //update/chat
+    document.getElementById("enter-btn").addEventListener("click", function(){
+        var chat = document.getElementById("chat-input").value;
+        document.getElementById("chat-input").value = "";
+        addUpdate(chat);
+    });   
 
-    // Remove a video from the queue and make it the currently playing video.
-    function popQueue() {
-        // Remove the previously "currently-playing" video.
-        console.log(db.collection("currentlyPlaying").get());
-        db.collection("currentlyPlaying")
-            .get()
-            .then(snapshot => {
-                snapshot.forEach(doc => {
-                    doc.ref.delete();
-                })
-            });
+}
 
-        // Grab the video from the top of the queue and make it the new
-        // currently playing video.
-        var newDocRef = db.collection("currentlyPlaying").doc(queue[0].id);
-        
+// Remove a video from the queue and make it the currently playing video.
+function popQueue() {
+    // Remove the previously "currently-playing" video.
+    console.log(db.collection("currentlyPlaying").get());
+    db.collection("currentlyPlaying")
+        .get()
+        .then(snapshot => {
+            snapshot.forEach(doc => {
+                doc.ref.delete();
+            })
+        });
+
+    // Grab the video from the top of the queue and make it the new
+    // currently playing video.
+    var newDocRef;
+    if(queue.length !== 0){
+        newDocRef = db.collection("currentlyPlaying").doc(queue[0].id);
+    
         newDocRef.set({
             id: queue[0].id,
             URL: queue[0].URL,
@@ -115,36 +128,19 @@ window.onload = function() {
         // Remove that video from the queue.
         db.collection("queue").doc(queue[0].id).delete();
     }
-
-    //update/chat
-    document.getElementById("enter-btn").addEventListener("click", function(){
-        var chat = document.getElementById("chat-input").value;
-        document.getElementById("chat-input").value = "";
-        addUpdate(chat);
-    });   
-
 }
 
 
 function updateTime(){
     var dt = new Date();
     var hour = dt.getHours();
-    if (hour >= 12)
-    {
-        var ampm = "pm";
+    var ampm = "am";
+    if (hour >= 12){
+        ampm = "pm";
     }
-    else
-    {
-        var ampm = "am";
-    }
-    
-    if (hour == 0)
-    {
+    hour %= 12;
+    if (hour == 0){
         hour = 12;
-    }
-    else
-    {
-        hour %= 12;
     }
 
     document.getElementById("time").innerHTML = hour + ":" + dt.getMinutes().toLocaleString('en-US', {
@@ -193,15 +189,12 @@ function onError(error) {
     console.log(error);
 }
 
-// 5. The API calls this function when the player's state changes.
-//    The function indicates that when playing a video (state=1),
-//    the player should play for six seconds and then stop.
-var done = false;
+//move to the next video if we get to the end
 function onPlayerStateChange(event) {
-    // if (event.data == YT.PlayerState.PLAYING && !done) {
-    //     setTimeout(stopVideo, 6000);
-    //     done = true;
-    // }
+    if (player.state === YT.PlayerState.ENDED) {
+        console.log("video ended");
+        popQueue();
+    }
 }
 function stopVideo() {
     player.stopVideo();

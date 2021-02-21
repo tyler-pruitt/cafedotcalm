@@ -74,6 +74,8 @@ header{
 
 #up-next{
     margin-left: 15px;
+    overflow-y: scroll;
+    overflow-x: scroll;
 }
 
 #bottom-row{
