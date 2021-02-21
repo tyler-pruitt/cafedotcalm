@@ -126,8 +126,27 @@ window.onload = function() {
 
 function updateTime(){
     var dt = new Date();
-    document.getElementById("time").innerHTML = dt.getHours()%12 + ":" + dt.getMinutes().toLocaleString('en-US', {
-        minimumIntegerDigits: 2}) + ".";
+    var hour = dt.getHours();
+    if (hour >= 12)
+    {
+        var ampm = "pm";
+    }
+    else
+    {
+        var ampm = "am";
+    }
+    
+    if (hour == 0)
+    {
+        hour = 12;
+    }
+    else
+    {
+        hour %= 12;
+    }
+
+    document.getElementById("time").innerHTML = hour + ":" + dt.getMinutes().toLocaleString('en-US', {
+        minimumIntegerDigits: 2}) + ampm;
 }
 
 function addUpdate(message){
