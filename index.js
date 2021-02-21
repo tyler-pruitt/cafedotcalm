@@ -59,8 +59,15 @@ window.onload = function() {
     updateTime();
     window.setInterval(updateTime, 20000);
     
-    function popQueue() {
-        db.collection("queue").doc(queue[0].id).delete();
+    document.getElementById("clear-queue").addEventListener("click", function () {
+        for (let i = 0; i < queue.length; i ++) {
+            db.collection("queue").doc(queue[i].id).delete();
+        }
+    });
+    
+
+    async function popQueue() {
+        await db.collection("queue").doc(queue[0].id).delete();
     }
 
     //update/chat
