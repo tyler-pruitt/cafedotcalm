@@ -1,4 +1,4 @@
 # cafedotcalm
 Cafedotcalm
 
-Website: https://tyler-pruitt.github.io/cafedotcalm/
+Website: https://cafedotcom.tech/
