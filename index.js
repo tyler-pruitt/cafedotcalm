@@ -2,7 +2,7 @@
 
 window.onload = function() {
     ul = document.getElementById("video-queue");
-    // var queue = [];
+    var queue = [];
 
     document.getElementById("confirm-btn").addEventListener("click", function () {
         var videoInput = document.getElementById("video-url-input").value;
@@ -29,16 +29,22 @@ window.onload = function() {
     // We need to make sure that the user is seeing the same queue as everyone
     // else... So we pull the queue from the database and use it to update
     // the list in our HTML file.
+
     db.collection("queue")
         .orderBy("created")
         .onSnapshot((snapshot) => {
             ul.innerHTML = "";
+            queue = [];
             snapshot.forEach(doc => {
                 let li = document.createElement('li');
                 li.innerHTML = doc.data().URL;
+                
                 ul.append(li);
-        })
+                queue.push(doc.data());
+            })
     });
+
+    
 
     //date and time
     var dt = new Date();
