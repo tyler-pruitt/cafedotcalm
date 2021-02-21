@@ -97,6 +97,7 @@ button{
     overflow-y: scroll;
     word-wrap: break-word;
 }
-#updates{
-    
+
+#enter-btn{
+    align-self: flex-end;
 }

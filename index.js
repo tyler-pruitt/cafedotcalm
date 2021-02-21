@@ -6,6 +6,7 @@ window.onload = function() {
 
     document.getElementById("confirm-btn").addEventListener("click", function () {
         var videoInput = document.getElementById("video-url-input").value;
+        document.getElementById("video-url-input").value = "";
 
         let newDocRef = db.collection("queue").doc();
         newDocRef.set({
@@ -48,6 +49,14 @@ window.onload = function() {
     }
     //update message
     addUpdate("welcome!");
+
+    //update/chat
+    document.getElementById("enter-btn").addEventListener("click", function(){
+        var chat = document.getElementById("chat-input").value;
+        document.getElementById("chat-input").value = "";
+        addUpdate(chat);
+
+    });
 }
 
 
