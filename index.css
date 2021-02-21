@@ -49,6 +49,23 @@ header{
     flex: 1;
     /* scale: 25%; */
 }
+
+#main-img-1, #main-img-2{
+    width: 1120px;
+    height: 630;
+}
+
+#main-img-3{
+    width: 750px;
+    height: 750px;
+}
+
+#main-img-4{
+    width: 960;
+    height: 540px;
+}
+
+
 #now-playing, #player, #up-next{
     display: flex;
     flex-direction: column;
