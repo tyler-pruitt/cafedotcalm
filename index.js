@@ -110,6 +110,8 @@ window.onload = function() {
             URL: queue[0].URL,
         });
 
+        addUpdate("Playing the next video.");
+
         // Remove that video from the queue.
         db.collection("queue").doc(queue[0].id).delete();
     }
