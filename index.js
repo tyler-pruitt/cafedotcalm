@@ -13,8 +13,8 @@ window.onload = function() {
             created: firebase.firestore.Timestamp.now()
         });
 
-        player.loadVideoByUrl(videoInput);
-        player.playVideo();
+        
+        // player.playVideo();
 
         addUpdate(videoInput + " was added to the queue!");
     });
@@ -63,6 +63,18 @@ window.onload = function() {
         for (let i = 0; i < queue.length; i ++) {
             db.collection("queue").doc(queue[i].id).delete();
         }
+    });
+    
+    document.getElementById("next").addEventListener("click", function () {
+        // https://stackoverflow.com/questions/3452546/how-do-i-get-the-youtube-video-id-from-a-url
+        popQueue();
+        let videoURL = queue[0];
+        let videoID = videoURL.split('v=')[1];
+        var ampersandPosition = videoID.indexOf('&');
+        if(ampersandPosition != -1) {
+            videoID = videoID.substring(0, ampersandPosition);
+        }
+        player.loadVideoById(videoID);
     });
     
 
@@ -114,7 +126,8 @@ player = new YT.Player('player', {
     videoId: '5qap5aO4i9A',
     events: {
     'onReady': onPlayerReady,
-    'onStateChange': onPlayerStateChange
+    'onStateChange': onPlayerStateChange,
+    'onError': onError
     }
 });
 }
@@ -123,15 +136,19 @@ function onPlayerReady(event) {
     event.target.playVideo();
 }
 
+function onError(error) {
+    console.log(error);
+}
+
 // 5. The API calls this function when the player's state changes.
 //    The function indicates that when playing a video (state=1),
 //    the player should play for six seconds and then stop.
 var done = false;
 function onPlayerStateChange(event) {
-    if (event.data == YT.PlayerState.PLAYING && !done) {
-        setTimeout(stopVideo, 6000);
-        done = true;
-    }
+    // if (event.data == YT.PlayerState.PLAYING && !done) {
+    //     setTimeout(stopVideo, 6000);
+    //     done = true;
+    // }
 }
 function stopVideo() {
     player.stopVideo();
