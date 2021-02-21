@@ -1,5 +1,3 @@
-//Your JavaScript code will go here!
-
 window.onload = function() {
     ul = document.getElementById("video-queue");
     var queue = [];
@@ -14,6 +12,11 @@ window.onload = function() {
             URL: videoInput,
             created: firebase.firestore.Timestamp.now()
         });
+
+        player.loadVideoByUrl(videoInput);
+        player.playVideo();
+
+        addUpdate(videoInput + " was added to the queue!");
     });
 
 
@@ -31,9 +34,6 @@ window.onload = function() {
             });
     });
 
-
-    //update message
-    // addUpdate("welcome!");
 
     // Refresh chat on user's screen.
     // Please replace. Super inefficient.
@@ -76,6 +76,7 @@ window.onload = function() {
         document.getElementById("chat-input").value = "";
         addUpdate(chat);
     });   
+
 }
 
 
@@ -91,10 +92,47 @@ function addUpdate(message){
         message: message,
         created: firebase.firestore.Timestamp.now()
     });
-    
+
     //autoscroll
     var ud = document.getElementById("updates-box");
     ud.scrollTop = ud.scrollHeight;
 
     // document.getElementById("updates").insertAdjacentHTML("beforeend", "<p>" + message + "</p>");    
+}
+
+//video player
+
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// creates an <iframe> (and YouTube player) after the API code downloads.
+var player;
+function onYouTubeIframeAPIReady() {
+player = new YT.Player('player', {
+    videoId: '5qap5aO4i9A',
+    events: {
+    'onReady': onPlayerReady,
+    'onStateChange': onPlayerStateChange
+    }
+});
+}
+
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
+
+// 5. The API calls this function when the player's state changes.
+//    The function indicates that when playing a video (state=1),
+//    the player should play for six seconds and then stop.
+var done = false;
+function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING && !done) {
+        setTimeout(stopVideo, 6000);
+        done = true;
+    }
+}
+function stopVideo() {
+    player.stopVideo();
 }

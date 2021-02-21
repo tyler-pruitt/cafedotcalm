@@ -49,7 +49,7 @@ header{
     flex: 1;
     /* scale: 25%; */
 }
-#now-playing, #up-next{
+#now-playing, #player, #up-next{
     display: flex;
     flex-direction: column;
     padding: 15px;
