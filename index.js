@@ -31,7 +31,20 @@ window.onload = function() {
                 li.innerHTML = doc.data().URL;
                 ul.append(li);
                 queue.push(doc.data());
+                // queue = queue.subarray(1);
             });
+            snapshot.docChanges().forEach((change) => {
+                if (change.type === "removed") {
+                    console.log(queue);
+                    // https://stackoverflow.com/questions/3452546/how-do-i-get-the-youtube-video-id-from-a-url
+                    let videoURL = queue[0].URL;
+                    let videoID = videoURL.split('v=')[1];
+                    var ampersandPosition = videoID.indexOf('&');
+                    if(ampersandPosition != -1) {
+                        videoID = videoID.substring(0, ampersandPosition);
+                    }
+                    player.loadVideoById(videoID);
+            }});
     });
 
 
@@ -46,7 +59,6 @@ window.onload = function() {
                 chat.insertAdjacentHTML("beforeend", "<p>" + doc.data().message + "</p>");    
         });
     });
-
 
     //date and time
     var dt = new Date();
@@ -66,22 +78,13 @@ window.onload = function() {
     });
     
     document.getElementById("next-song").addEventListener("click", function () {
-        // https://stackoverflow.com/questions/3452546/how-do-i-get-the-youtube-video-id-from-a-url
         popQueue();
-        let videoURL = queue[0].URL;
-        console.log(videoURL);
-        let videoID = videoURL.split('v=')[1];
-        var ampersandPosition = videoID.indexOf('&');
-        if(ampersandPosition != -1) {
-            videoID = videoID.substring(0, ampersandPosition);
-        }
-        console.log(videoID);
-        player.loadVideoById(videoID);
     });
     
 
     async function popQueue() {
         await db.collection("queue").doc(queue[0].id).delete();
+        queue.shift();
     }
 
     //update/chat
