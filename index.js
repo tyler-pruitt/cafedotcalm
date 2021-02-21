@@ -42,18 +42,21 @@ window.onload = function() {
 
     updateTime();
     window.setInterval(updateTime, 20000);
-
     
     function popQueue() {
         db.collection("queue").doc(queue[0].id).delete();
     }
-
+    //update message
+    addUpdate("welcome!");
 }
 
 
 function updateTime(){
     var dt = new Date();
-    console.log("updating time");
     document.getElementById("time").innerHTML = dt.getHours()%12 + ":" + dt.getMinutes().toLocaleString('en-US', {
         minimumIntegerDigits: 2}) + ".";
+}
+
+function addUpdate(message){
+    document.getElementById("updates").insertAdjacentHTML("beforeend", "<p>" + message + "</p>");    
 }

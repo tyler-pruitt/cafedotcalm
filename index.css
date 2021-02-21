@@ -80,7 +80,8 @@ button{
     margin: 10px 10px 10px 0px;
 }
 
-#updates{
+#updates-box{
+    flex-direction: column;
     margin-top: 15px;
     margin-left: 15px;
     padding: 15px;
@@ -88,5 +89,14 @@ button{
     flex: 2;
     width: fit-content;
     align-self: stretch;
+    height: 200px;
     background-color: ivory;
+
+    min-width: 700px;
+
+    overflow-y: scroll;
+    word-wrap: break-word;
+}
+#updates{
+    
 }
