@@ -48,7 +48,7 @@ window.onload = function() {
         db.collection("queue").doc(queue[0].id).delete();
     }
     //update message
-    addUpdate("welcome!");
+    // addUpdate("welcome!");
 
     //update/chat
     document.getElementById("enter-btn").addEventListener("click", function(){
@@ -57,6 +57,16 @@ window.onload = function() {
         addUpdate(chat);
 
     });
+
+    db.collection("chat")
+        .orderBy("created")
+        .onSnapshot((snapshot) => {
+            let chat = document.getElementById("updates");
+            chat.innerHTML = "";
+            snapshot.forEach(doc => {
+                chat.insertAdjacentHTML("beforeend", "<p>" + doc.data().message + "</p>");    
+            });
+        });
 }
 
 
@@ -67,5 +77,10 @@ function updateTime(){
 }
 
 function addUpdate(message){
-    document.getElementById("updates").insertAdjacentHTML("beforeend", "<p>" + message + "</p>");    
+    var newDocRef = db.collection("chat").doc();
+    newDocRef.set({
+        message: message,
+        created: firebase.firestore.Timestamp.now()
+    });
+    // document.getElementById("updates").insertAdjacentHTML("beforeend", "<p>" + message + "</p>");    
 }
