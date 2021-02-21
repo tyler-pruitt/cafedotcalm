@@ -49,11 +49,13 @@ window.onload = function() {
     document.getElementById("date").innerHTML = output;
 
     updateTime();
+    window.setInterval(updateTime, 20000);
 }
 
 
 function updateTime(){
     var dt = new Date();
-    document.getElementById("time").innerHTML = dt.getHours() + ":" + dt.getMinutes().toLocaleString('en-US', {
+    console.log("updating time");
+    document.getElementById("time").innerHTML = dt.getHours()%12 + ":" + dt.getMinutes().toLocaleString('en-US', {
         minimumIntegerDigits: 2}) + ".";
 }
