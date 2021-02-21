@@ -6,30 +6,19 @@ window.onload = function() {
 
     document.getElementById("confirm-btn").addEventListener("click", function () {
         var videoInput = document.getElementById("video-url-input").value;
-        // queue.push(videoInput);
-        // console.log(queue);
 
-        
-        // Having the timestamp serve as the ID might make querying faster? I
-        // don't know...
-
-        // const date = new Date();
-        // const id = date.toISOString();
-        // db.collection("queue")
-        //     .doc(id)
-        //     .set({URL: videoInput});
-        
-        db.collection("queue").add({
+        let newDocRef = db.collection("queue").doc();
+        newDocRef.set({
+            id: newDocRef.id,
             URL: videoInput,
             created: firebase.firestore.Timestamp.now()
-        })
+        });
     });
 
 
     // We need to make sure that the user is seeing the same queue as everyone
     // else... So we pull the queue from the database and use it to update
     // the list in our HTML file.
-
     db.collection("queue")
         .orderBy("created")
         .onSnapshot((snapshot) => {
@@ -38,13 +27,10 @@ window.onload = function() {
             snapshot.forEach(doc => {
                 let li = document.createElement('li');
                 li.innerHTML = doc.data().URL;
-                
                 ul.append(li);
                 queue.push(doc.data());
-            })
+            });
     });
-
-    
 
     //date and time
     var dt = new Date();
@@ -56,6 +42,12 @@ window.onload = function() {
 
     updateTime();
     window.setInterval(updateTime, 20000);
+
+    
+    function popQueue() {
+        db.collection("queue").doc(queue[0].id).delete();
+    }
+
 }
 
 
