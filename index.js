@@ -41,7 +41,7 @@ window.onload = function() {
         .orderBy("created")
         .onSnapshot((snapshot) => {
             let chat = document.getElementById("updates");
-            chat.innerHTML = "";
+            chat.innerHTML = "<p>welcome!</p>";
             snapshot.forEach(doc => {
                 chat.insertAdjacentHTML("beforeend", "<p>" + doc.data().message + "</p>");    
         });
@@ -68,7 +68,6 @@ window.onload = function() {
         var chat = document.getElementById("chat-input").value;
         document.getElementById("chat-input").value = "";
         addUpdate(chat);
-
     });   
 }
 
