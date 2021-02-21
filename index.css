@@ -56,7 +56,7 @@ header{
     border-radius: 20px;
     flex: 1;
     width: 300px;
-    align-self: stretch;
+    /*align-self: stretch;*/
     background-color: ivory;
 }
 
@@ -112,4 +112,8 @@ button{
 
 #chat-input-section{
     display: flex;
+}
+
+#next{
+    margin: 10px 10px 10px 0px;
 }
