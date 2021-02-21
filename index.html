@@ -13,21 +13,21 @@
     <title>cafédotcalm</title>
   </head>
   <body>
-    <header>
+    <header style="padding-bottom: : 50px ">
       <div id="title">
         <img id="logo" src="cafedotcalm.png"/>
-        <h1>cafédotcalm</h1>
+        <h1 style="padding: 20px; font-size: 60px">cafédotcalm</h1>
       </div>
       
-      <p id="date-time">Today is <span id="date"></span>
+      <p id="date-time"  style="color: #c0c0c0; padding-right: 100px">Today is <span id="date"></span>
         It is now <span id="time"></span> PST.</p>
     </header>
     
-    <p>Welcome to cafedotcalm! We hope you enjoy your stay :)</p>
+    <p style="padding: 20px; font-size: 20px; color:#c0c0c0">welcome to cafedotcalm! we hope you enjoy your stay :)</p>
 
     <div id="main">
       <div id="now-playing">
-        <h6>now playing:</h6>
+        <h6 style=" color:  #faebd7; font-size: 25px">now playing:</h6>
         <div id="player"></div>
         <!-- <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe> -->
       </div>
@@ -35,7 +35,7 @@
         <img id="main-gif" src="taiwanstudy.gif">
       </div>
       <div id="up-next">
-        <h6>up next:</h6>
+        <h6 style=" color:  #faebd7; font-size: 25px">up next:</h6>
         <ol id="video-queue"></ol>
         <next>
           <button id="next-song">next</button>
@@ -46,8 +46,8 @@
 
     <div id="bottom-row">
       <div id="updates-section">
-        <h6>updates:</h6>
-        <div id="updates-box">
+        <h6 style=" color:  black; font-size: 20px">updates:</h6>
+        <div id="updates-box" style=" color:  #faebd7; size: 10px">
           <p id="updates"></p>
         </div>
         <div id="chat-input-section">
@@ -55,8 +55,12 @@
           <button id="enter-btn">enter</button>
         </div>
       </div>
-      <div class="form-group">
-        <h6 for="video-url-input">Request a song here: <br> (input a valid youtube link)</h6>
+
+
+      <div class="form-group" style="padding-top: 50px">
+        <h6 for="video-url-input" style=" color:  #faebd7; size: 10px">
+          request a song here: <br> (input a valid youtube link)
+        </h6>
         <input type="text" id="video-url-input" class="form-control">
         <button id="confirm-btn">add to queue</button>
       </div>

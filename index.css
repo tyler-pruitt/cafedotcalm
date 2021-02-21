@@ -4,7 +4,7 @@
 
 body{
     margin: 20px;
-    background-color: beige;
+    background-color: black;
     
 }
 
@@ -26,7 +26,7 @@ header{
 #title{
     display: flex;
     align-items: baseline;
-    color: var(--custom-brown);
+    color: beige;
 }
 
 
@@ -57,7 +57,9 @@ header{
     flex: 1;
     width: 300px;
     /*align-self: stretch;*/
-    background-color: ivory;
+    background-color: #963a2f;
+    color:      #faebd7;
+    size: 100px;
 }
 
 #now-playing{
@@ -103,7 +105,8 @@ button{
     margin-right: 15px;
     padding: 15px;
     border-radius: 20px;
-    background-color: ivory;
+    background-color:   #d49064;
+    color:      #faebd7;
 }
 
 #updates-box p{
@@ -117,3 +120,4 @@ button{
 #next{
     margin: 10px 10px 10px 0px;
 }
+
