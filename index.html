@@ -16,14 +16,14 @@
     <header style="padding-bottom: 50px ">
       <div id="title">
         <img id="logo" src="cafedotcalm.png"/>
-        <h1 style="padding: 20px; font-size: 60px">cafédotcalm</h1>
+        <h1 style="padding: 20px; font-size: 60px; font-family: monospace;">cafédotcalm</h1>
       </div>
       
       <p id="date-time"  style="color: #c0c0c0; padding-right: 100px">Today is <span id="date"></span>
         It is now <span id="time"></span> PST.</p>
     </header>
     
-    <p style="padding: 20px; font-size: 20px; color:#c0c0c0">welcome to cafedotcalm! we hope you enjoy your stay :)</p>
+    <p style="padding: 20px; font-size: 20px; color:#c0c0c0; font-family: monospace;">welcome to cafedotcalm! we hope you enjoy your stay :)</p>
 
     <div id="main">
       <div id="now-playing">
@@ -45,42 +45,46 @@
       </div>
     </div>
 
-    <div id="bottom-row">
-      <div id="updates-section">
-        <h6 style=" color:  black; font-size: 20px">updates:</h6>
+    <div id="bottom-row" style="padding-top: 100px">
+      <div id="updates-section" >
+        <h6 style=" color: #faebd7 ; font-size: 20px">updates:</h6>
         <div id="updates-box" style=" color:  #faebd7; size: 10px">
-          <p id="updates" style=" color:  #faebd7; size: 10px"></p>
+          <p id="updates" style=" color:  black"></p>
         </div>
         <div id="chat-input-section">
-          <input type="text" id="chat-input" class="form-control">
+          <input type="text" id="chat-input" class="form-control" style="background-color: #faebd7">
           <button id="enter-btn">enter</button>
         </div>
       </div>
 
 
       <div class="form-group" style="padding-top: 50px ;">
-        <h6 for="video-url-input" style=" color:  #faebd7; size: 10px">
-          request a song here: <br> (input a valid youtube link)
-        </h6>
-        <input type="text" id="video-url-input" class="form-control">
+        <h6 for="video-url-input" style=" color:  #faebd7; font-size: 19px; font-family: sans-serif ">
+          request a song here: </h6><p style=" color:  #faebd7; font-size: 15px; font-family: sans-serif "> (input a valid youtube link)</p>
+        
+        <input type="text" id="video-url-input" class="form-control" style="background-color:  #faebd7">
         <button id="confirm-btn">add to queue</button>
       </div>
     </div>
 
-    <div class="container">
+    <div class="container" style="padding-top: 100px; color:  #faebd7" >
+      <h1>take a breather, here are some photos</h1>
+    </div>
+
+    <div class="container" style="padding-top: 100px">
       <div class="row">
-        <div class="col-sm">
+        <div class="col-sm" style="padding: 20px">
           <img id="main-img-1" src="latenight.png">
         </div>
-        <div class="col-sm">
+        <div class="col-sm" style="padding: 20px">
           <img id="main-img-2" src="shop.png">
         </div>
       </div>
       <div class="row">
-        <div class="col-sm">
+        <div class="col-sm" style="padding: 20px">
           <img id="main-img-3" src="view.png">
         </div>
-        <div class="col-sm">
+        <div class="col-sm" style="padding: 20px">
           <img id="main-img-4" src="train.png">
         </div>
       </div>

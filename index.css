@@ -5,12 +5,11 @@
 body{
     margin: 20px;
     background-color: black;
-    
 }
 
 h6{
     color: var(--custom-brown);
-    font-style: italic;
+    font-family: monospace;
 }
 
 p{
@@ -75,6 +74,7 @@ header{
     background-color: #963a2f;
     color:      #faebd7;
     size: 100px;
+    font-family: monospace;
 }
 
 #now-playing{
@@ -116,16 +116,18 @@ button{
     width: 1000px;
     align-self: stretch;
     overflow-y: scroll;
+    color: black;
 }
 
 #updates-section{
     margin-top: 15px;
     /*margin-left: 15px;*/
+    font-family: monospace;
     margin-right: 15px;
     padding: 15px;
     border-radius: 20px;
-    background-color:   #d49064;
-    color:      #faebd7;
+    background-color: #faebd7
+    color: black;
 }
 
 #updates-box p{
@@ -139,4 +141,3 @@ button{
 #next{
     margin: 10px 10px 10px 0px;
 }
-
