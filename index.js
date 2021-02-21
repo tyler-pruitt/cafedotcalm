@@ -65,15 +65,17 @@ window.onload = function() {
         }
     });
     
-    document.getElementById("next").addEventListener("click", function () {
+    document.getElementById("next-song").addEventListener("click", function () {
         // https://stackoverflow.com/questions/3452546/how-do-i-get-the-youtube-video-id-from-a-url
         popQueue();
-        let videoURL = queue[0];
+        let videoURL = queue[0].URL;
+        console.log(videoURL);
         let videoID = videoURL.split('v=')[1];
         var ampersandPosition = videoID.indexOf('&');
         if(ampersandPosition != -1) {
             videoID = videoID.substring(0, ampersandPosition);
         }
+        console.log(videoID);
         player.loadVideoById(videoID);
     });
     
