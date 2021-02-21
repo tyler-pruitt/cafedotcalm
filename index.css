@@ -17,6 +17,21 @@ p{
     color: gray;
 }
 
+#main-img-1, #main-img-2{
+    width: 1120px;
+    height: 630;
+}
+
+#main-img-3{
+    width: 750px;
+    height: 750px;
+}
+
+#main-img-4{
+    width: 960;
+    height: 540px;
+}
+
 header{
     display: flex;
     justify-content: space-between;
@@ -49,23 +64,6 @@ header{
     flex: 1;
     /* scale: 25%; */
 }
-
-#main-img-1, #main-img-2{
-    width: 1120px;
-    height: 630;
-}
-
-#main-img-3{
-    width: 750px;
-    height: 750px;
-}
-
-#main-img-4{
-    width: 960;
-    height: 540px;
-}
-
-
 #now-playing, #player, #up-next{
     display: flex;
     flex-direction: column;
@@ -107,6 +105,8 @@ button{
     color: white;
     border-radius: 15px;
     margin: 10px 10px 10px 0px;
+    padding-left:   20px;
+    padding-right:   20px;
 }
 
 
