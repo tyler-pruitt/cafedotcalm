@@ -12,36 +12,51 @@
     <title>cafédotcalm</title>
   </head>
   <body>
-    <div>
-      <h1>cafédotcalm</h1>
-      <p>Today is <span id="date"></span></p>
-      <p>It is now <span id="time"></span></p>
-    </div>
+    <header>
+      <div id="title">
+        <img id="logo" src="cafedotcalm.png"/>
+        <h1>cafédotcalm</h1>
+      </div>
+      
+      <p id="date-time">Today is <span id="date"></span>
+        It is now <span id="time"></span></p>
+    </header>
     
-    <p>This is the beginning of the first paragraph.
-      We should make the website simple at first and gradually build it up.
-    </p>
-    <img src="taiwanstudy.gif">
-    <p>Image credits to Pixel Jeff (@pixeljeff1995) | Twitter</p>
+    <p>Welcome to cafedotcalm! We hope you enjoy your stay :)</p>
 
-    
-    <ol id="video-queue">
-    </ol>
-
-    <div class="form-group">
-      <label for="video-url-input">Video URL Input</label>
-      <input type="text" id="video-url-input" class="form-control">
+    <div id="main">
+      <div id="now-playing">
+        <h6>now playing:</h6>
+        <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      </div>
+      <div >
+        <img id="main-gif" src="taiwanstudy.gif">
+        <p>Image credits to Pixel Jeff (@pixeljeff1995) | Twitter</p>
+      </div>
+      <div id="up-next">
+        <h6>up next:</h6>
+        <ol id="video-queue">
+        </ol>
+      </div>
     </div>
 
-    <button id="confirm-btn" class="btn btn-primary">push to queue</button>
+    <div id="bottom-row">
+      <div class="form-group">
+        <h6 for="video-url-input">Request a song here: <br> (input a valid youtube link)</h6>
+        <input type="text" id="video-url-input" class="form-control">
+        <button id="confirm-btn">add to queue</button>
+      </div>
+      <div id="updates">
+        <h6>updates:</h6>
+        <p>updates go here</p>
+      </div>
 
+    </div>
 
     <!-- JavaScript -->
     <script src="./index.js"></script>
 
-
-
-     <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.2.8/firebase-app.js"></script>

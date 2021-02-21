@@ -1,1 +1,93 @@
-/* CSS will go here*/
+:root{
+    --custom-brown: #4a220a;
+}
+
+body{
+    margin: 20px;
+    background-color: beige;
+    
+}
+
+h6{
+    color: var(--custom-brown);
+    font-style: italic;
+}
+
+p{
+    color: gray;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+#title{
+    display: flex;
+    align-items: baseline;
+    color: var(--custom-brown);
+}
+
+#now-playing{
+    align-items: center;
+}
+
+#date-time{
+    font-style: oblique;
+}
+
+#logo{
+    max-height: 100px;
+}
+#main{
+    display: flex;
+    /* justify-content: stretch;
+    align-content: stretch; */
+    /* width: 100%; */
+}
+
+#main-gif{
+    width: 900px;
+    flex: 2;
+    /* scale: 25%; */
+}
+#now-playing, #up-next{
+    padding: 15px;
+    border-radius: 20px;
+    flex: 1;
+    width: fit-content;
+    align-self: stretch;
+    background-color: ivory;
+}
+#now-playing{
+    margin-right: 15px;
+}
+#up-next{
+    margin-left: 15px;
+}
+
+#bottom-row{
+    display: flex;
+}
+
+.form-group{
+    flex: 1;
+}
+button{
+    background-color: var(--custom-brown);
+    color: white;
+    border-radius: 15px;
+    margin: 10px 10px 10px 0px;
+}
+
+#updates{
+    margin-top: 15px;
+    margin-left: 15px;
+    padding: 15px;
+    border-radius: 20px;
+    flex: 2;
+    width: fit-content;
+    align-self: stretch;
+    background-color: ivory;
+}

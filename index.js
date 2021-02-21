@@ -1,7 +1,4 @@
 //Your JavaScript code will go here!
-// Firebase App (the core Firebase SDK) is always required and must be listed first
-
-
 
 window.onload = function() {
     ul = document.getElementById("video-queue");
@@ -28,15 +25,6 @@ window.onload = function() {
         })
     });
 
-    //date and time
-    var dt = new Date();
-    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    var output = days[dt.getDay()];
-    output += ", " + months[dt.getMonth()] + " " + dt.getDate() + ".";
-    document.getElementById("date").innerHTML = output;
-
-    document.getElementById("time").innerHTML = dt.getHours() + ":" + dt.getMinutes() + ".";
 
     // We need to make sure that the user is seeing the same queue as everyone
     // else... So we pull the queue from the database and use it to update
@@ -51,4 +39,21 @@ window.onload = function() {
                 ul.append(li);
         })
     });
+
+    //date and time
+    var dt = new Date();
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var output = days[dt.getDay()];
+    output += ", " + months[dt.getMonth()] + " " + dt.getDate() + ".";
+    document.getElementById("date").innerHTML = output;
+
+    updateTime();
+}
+
+
+function updateTime(){
+    var dt = new Date();
+    document.getElementById("time").innerHTML = dt.getHours() + ":" + dt.getMinutes().toLocaleString('en-US', {
+        minimumIntegerDigits: 2}) + ".";
 }
