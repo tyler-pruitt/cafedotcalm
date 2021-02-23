@@ -4,6 +4,8 @@ Website: https://cafedotcalm.tech/
 
 If this link does not work, then use https://tyler-pruitt.github.io/cafedotcalm/
 
+<img src="https://github.com/tyler-pruitt/cafedotcalm/blob/main/cafedotcalm.png" width="200" height="200" />
+
 # Inspiration
 It's been a while since we've been able to sit at a pleasant little coffee shop and study, relax, chill with friends and strangers. Though we have technologies like Facetime and text, there's something different about sitting at the table across from a stranger or the warm atmosphere of a public space. We wanted to help generate that feeling of community comfort by building a virtual café.
 
