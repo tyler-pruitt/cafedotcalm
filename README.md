@@ -1,8 +1,6 @@
 # cafédotcalm
 
-Website: https://cafedotcalm.tech/
-
-If this link does not work, then use https://tyler-pruitt.github.io/cafedotcalm/
+Website: https://tyler-pruitt.github.io/cafedotcalm/
 
 <img src="https://github.com/tyler-pruitt/cafedotcalm/blob/main/cafedotcalm.png" width="200" height="200" />
 
